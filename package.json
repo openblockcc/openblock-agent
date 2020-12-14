@@ -1,0 +1,40 @@
+{
+  "name": "scratchhw-link-desktop",
+  "version": "0.1.0",
+  "description": "Scratch-HW link desktop",
+  "main": "src/index.js",
+  "scripts": {
+    "install": "electron-rebuild",
+    "install:rebuild": "electron-rebuild",
+    "start": "electron .",
+    "build": "npm run build:dev",
+    "build:dev": "electron-packager . SC-Link --platform=win32 --arch=x64 --icon=./desktop/app.ico --out=./out --app-version=0.0.1 --overwrite",
+    "build:dir": "electron-packager . SC-Link --platform=win32 --arch=x64 --icon=./desktop/app.ico --out=./out --app-version=0.0.1 --overwrite",
+    "build:dist": "electron-packager . SC-Link --platform=win32 --arch=x64 --icon=./desktop/app.ico --out=./out --asar --app-version=0.0.1 --overwrite",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ScratchHW/scratchhw-link-desktop.git"
+  },
+  "keywords": [
+    "scratchhw",
+    "link",
+    "scratch3.0",
+    "desktop"
+  ],
+  "author": "ScratchHW Team",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ScratchHW/scratchhw-link-desktop/issues"
+  },
+  "homepage": "https://github.com/ScratchHW/scratchhw-link-desktop#readme",
+  "dependencies": {
+    "scratchhw-link": "^0.1.0"
+  },
+  "devDependencies": {
+    "electron": "^11.1.0",
+    "electron-builder": "^22.9.1",
+    "electron-rebuild": "^2.3.4"
+  }
+}
