@@ -18,6 +18,7 @@ let mainWindow;
 
 function createWindow() {
     mainWindow = new BrowserWindow({
+        icon: path.join(__dirname, './icon/ScratchLink.ico'),
         width: 400,
         height: 400,
         center: true,
@@ -58,7 +59,6 @@ function createWindow() {
 
     mainWindow.on('close', (event) => { 
         mainWindow.hide(); 
-        // mainWindow.setSkipTaskbar(true);
         event.preventDefault();
     });
 
