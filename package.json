@@ -5,12 +5,11 @@
   "main": "src/index.js",
   "scripts": {
     "install": "electron-rebuild",
-    "install:rebuild": "electron-rebuild",
+    "postinstall": "electron-builder install-app-deps",
     "start": "electron .",
-    "build": "npm run build:dev",
-    "build:dev": "electron-packager . SC-Link --platform=win32 --arch=x64 --icon=./desktop/app.ico --out=./out --app-version=0.0.1 --overwrite",
-    "build:dir": "electron-packager . SC-Link --platform=win32 --arch=x64 --icon=./desktop/app.ico --out=./out --app-version=0.0.1 --overwrite",
-    "build:dist": "electron-packager . SC-Link --platform=win32 --arch=x64 --icon=./desktop/app.ico --out=./out --asar --app-version=0.0.1 --overwrite",
+    "build": "npm run build:pack",
+    "build:pack": "electron-builder --dir",
+    "build:dist": "electron-builder",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

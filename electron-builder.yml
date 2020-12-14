@@ -1,0 +1,19 @@
+directories:
+  output: dist
+  buildResources: buildResources
+appId: 'com.scratchhw.scratchhw-link-desktop'
+productName: "ScratchHW Link"
+publish: # empty provider list = don't publish
+win:
+  icon: src/icon/ScratchLink.ico
+  target:
+    # - appx
+    - nsis
+appx:
+  identityName: Scratch-HW.ScratchhwLinkDesktop
+  publisherDisplayName: "Scratch-HW Team"
+  publisher: "CN=2EC43DF1-469A-4119-9AB9-568A0A1FF65F"
+  artifactName: "ScratchHW ${version}.${ext}"
+nsis:
+  oneClick: false # allow user to choose per-user or per-machine
+  artifactName: "ScratchHW ${version} Setup.${ext}"
