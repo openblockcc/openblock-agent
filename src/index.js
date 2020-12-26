@@ -1,17 +1,10 @@
-// Modules to control application life and create native browser window
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow, ipcMain } = require('electron');
 const path = require('path');
-const url = require('url');
-
-const server = require('scratchhw-link');
-
-//electron
 const electron = require('electron');
+const ScratchHWLink = require('scratchhw-link');
 
-//用一个 Tray 来表示一个图标,这个图标处于正在运行的系统的通知区 ，通常被添加到一个 context menu 上.
 const Menu = electron.Menu;
 const Tray = electron.Tray;
-//托盘对象
 var appTray = null;
 
 let mainWindow;
@@ -22,25 +15,41 @@ function createWindow() {
         width: 400,
         height: 400,
         center: true,
-        maximizable: false,
-        minimizable: false,
+        // resizable: false,
         fullscreenable: false,
-        resizable: false,
         webPreferences: {
+            nodeIntegration: true,
+            enableRemoteModule: true,
         }
+        
     })
 
     mainWindow.loadFile('./src/index.html');
     mainWindow.setMenu(null)
-    // mainWindow.hide();
+    // mainWindow.webContents.openDevTools();
+    
+    const userDataPath = (electron.app || electron.remote.app).getPath(
+        'userData'
+    );
+
+    const appPath = app.getAppPath();
+
+    let toolsPath;
+    if (appPath.search(/app.asar/g) === -1) {
+        toolsPath = path.join(appPath, "tools");
+    } else {
+        toolsPath = path.join(appPath, "../tools");
+    }
+    const link = new ScratchHWLink(userDataPath, toolsPath);
+    link.listen();
 
     const trayMenuTemplate = [
         {
-            label: '帮助',
+            label: 'help',
             click: function () {}
         },
         {
-            label: '退出',
+            label: 'exit',
             click: function () {
                 appTray.destroy();
                 mainWindow.destroy();
@@ -66,8 +75,6 @@ function createWindow() {
         mainWindow = null;
     })
 }
-
-
 
 const gotTheLock = app.requestSingleInstanceLock()
 if (!gotTheLock) {

@@ -1,9 +1,12 @@
+buildDependenciesFromSource: true
 directories:
   output: dist
   buildResources: buildResources
+extraResources: ["tools"]
 appId: 'com.scratchhw.scratchhw-link-desktop'
 productName: "ScratchHW Link"
 publish: # empty provider list = don't publish
+# asar: false
 win:
   icon: src/icon/ScratchLink.ico
   target:
