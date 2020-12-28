@@ -28,7 +28,7 @@
   },
   "homepage": "https://github.com/ScratchHW/scratchhw-link-desktop#readme",
   "dependencies": {
-    "scratchhw-link": "0.1.0-beta"
+    "scratchhw-link": "latest"
   },
   "devDependencies": {
     "electron": "^10.1.3",
