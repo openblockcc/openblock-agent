@@ -40,7 +40,7 @@ function createWindow() {
     } else {
         toolsPath = path.join(appPath, "../tools");
     }
-    const link = new ScratchHWLink(userDataPath, toolsPath);
+    const link = new ScratchHWLink(path.join(userDataPath, "Data"), toolsPath);
     link.listen();
 
     const trayMenuTemplate = [
