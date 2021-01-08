@@ -29,8 +29,8 @@
   },
   "homepage": "https://github.com/ScratchHW/scratchhw-link-desktop#readme",
   "dependencies": {
-    "scratchhw-extension": "0.1.0-prerelease.20210108121635",
-    "scratchhw-link": "0.1.0-prerelease.20210107154140"
+    "scratchhw-extension": "0.1.0-prerelease.20210108123641",
+    "scratchhw-link": "0.1.0-prerelease.20210108095012"
   },
   "devDependencies": {
     "copy-dir-cli": "0.0.3",
