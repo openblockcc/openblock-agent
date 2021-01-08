@@ -1,6 +1,6 @@
 {
   "name": "scratchhw-link-desktop",
-  "version": "0.1.0-beta",
+  "version": "0.2.0-beta",
   "description": "Scratch-HW link desktop",
   "main": "src/index.js",
   "scripts": {
