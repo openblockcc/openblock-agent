@@ -2,7 +2,7 @@ buildDependenciesFromSource: true
 directories:
   output: dist
   buildResources: buildResources
-extraResources: ["tools"]
+extraResources: ["tools", "extensions"]
 appId: 'com.scratchhw.scratchhw-link-desktop'
 productName: "ScratchHW Link"
 publish: # empty provider list = don't publish

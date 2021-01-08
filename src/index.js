@@ -2,6 +2,7 @@ const { app, BrowserWindow, ipcMain } = require('electron');
 const path = require('path');
 const electron = require('electron');
 const ScratchHWLink = require('scratchhw-link');
+const ScratchHWExtension = require('scratchhw-extension');
 
 const Menu = electron.Menu;
 const Tray = electron.Tray;
@@ -42,6 +43,15 @@ function createWindow() {
     }
     const link = new ScratchHWLink(path.join(userDataPath, "Data"), toolsPath);
     link.listen();
+
+    let extensionsPath;
+    if (appPath.search(/app.asar/g) === -1) {
+        extensionsPath = path.join(appPath, "extensions");
+    } else {
+        extensionsPath = path.join(appPath, "../extensions");
+    }
+    const extension = new ScratchHWExtension(path.join(userDataPath, "Data"), extensionsPath);
+    extension.listen();
 
     const trayMenuTemplate = [
         {

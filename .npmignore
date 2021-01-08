@@ -1,0 +1,13 @@
+# Development files
+.eslintrc.js
+/.editorconfig
+/.eslintignore
+/.gitattributes
+/.github
+/.travis.yml
+/extensions
+/dist
+
+# Coverage created files
+/.nyc_output
+/coverage
