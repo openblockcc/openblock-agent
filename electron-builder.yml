@@ -3,20 +3,22 @@ directories:
   output: dist
   buildResources: buildResources
 extraResources: ["tools", "extensions"]
-appId: 'com.scratchhw.scratchhw-link-desktop'
-productName: "ScratchHW Link"
+
+appId: 'com.openblock.openblock-link-desktop'
+productName: "OpenBlock Link"
+
 publish: # empty provider list = don't publish
-# asar: false
+
 win:
-  icon: src/icon/ScratchLink.ico
+  icon: buildResources/OpenBlock-Link.ico
   target:
     # - appx
     - nsis
 appx:
-  identityName: Scratch-HW.ScratchhwLinkDesktop
-  publisherDisplayName: "Scratch-HW Team"
+  identityName: OpenBlock.OpenBlockLinkDesktop
+  publisherDisplayName: "OpenBlock"
   publisher: "CN=2EC43DF1-469A-4119-9AB9-568A0A1FF65F"
-  artifactName: "ScratchHW ${version}.${ext}"
+  artifactName: "OpenBlock Link Desktop ${version}.${ext}"
 nsis:
   oneClick: false # allow user to choose per-user or per-machine
-  artifactName: "ScratchHW ${version} Setup.${ext}"
+  artifactName: "OpenBlock Link Desktop  ${version} Setup.${ext}"

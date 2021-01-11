@@ -12,7 +12,7 @@ let mainWindow;
 
 function createWindow() {
     mainWindow = new BrowserWindow({
-        icon: path.join(__dirname, './icon/ScratchLink.ico'),
+        icon: path.join(__dirname, './icon/OpenBlock-Link.ico'),
         width: 400,
         height: 400,
         center: true,
@@ -67,9 +67,9 @@ function createWindow() {
         }
     ];
  
-    appTray = new Tray(path.join(__dirname, './icon/ScratchLink.ico'));
+    appTray = new Tray(path.join(__dirname, './icon/OpenBlock-Link.ico'));
     const contextMenu = Menu.buildFromTemplate(trayMenuTemplate);
-    appTray.setToolTip('Scratch-HW Link');
+    appTray.setToolTip('OpenBlock Link');
     appTray.setContextMenu(contextMenu);
     
     appTray.on('click',function(){

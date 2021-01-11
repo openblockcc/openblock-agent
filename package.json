@@ -1,6 +1,6 @@
 {
   "name": "scratchhw-link-desktop",
-  "version": "0.2.0-beta",
+  "version": "0.2.1-beta",
   "description": "Scratch-HW link desktop",
   "main": "src/index.js",
   "scripts": {
@@ -30,7 +30,7 @@
   "homepage": "https://github.com/ScratchHW/scratchhw-link-desktop#readme",
   "dependencies": {
     "scratchhw-extension": "0.1.0-prerelease.20210108123641",
-    "scratchhw-link": "0.1.0-prerelease.20210108095012"
+    "scratchhw-link": "0.1.0-prerelease.20210111072835"
   },
   "devDependencies": {
     "cpy-cli": "^3.1.1",
