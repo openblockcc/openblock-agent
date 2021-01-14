@@ -1,12 +1,10 @@
-buildDependenciesFromSource: true
 directories:
-  output: dist
   buildResources: buildResources
+  output: dist
 extraResources: ["tools", "extensions"]
 
-appId: 'com.openblock.openblock-link-desktop'
+appId: 'openblock.cc.openblock-link-desktop'
 productName: "OpenBlock Link"
-
 publish: # empty provider list = don't publish
 
 win:
@@ -14,11 +12,11 @@ win:
   target:
     # - appx
     - nsis
-appx:
-  identityName: OpenBlock.OpenBlockLinkDesktop
-  publisherDisplayName: "OpenBlock"
-  publisher: "CN=2EC43DF1-469A-4119-9AB9-568A0A1FF65F"
-  artifactName: "OpenBlock Link Desktop ${version}.${ext}"
+# appx:
+#   identityName: OpenBlock.OpenBlockLinkDesktop
+#   publisherDisplayName: "OpenBlock"
+#   publisher: "CN=2EC43DF1-469A-4119-9AB9-568A0A1FF65F"
+#   artifactName: "OpenBlock Link Desktop ${version}.${ext}"
 nsis:
   oneClick: false # allow user to choose per-user or per-machine
-  artifactName: "OpenBlock Link Desktop  ${version} Setup.${ext}"
+  artifactName: "OpenBlock Link ${version} Setup.${ext}"

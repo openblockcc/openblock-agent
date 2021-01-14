@@ -29,9 +29,7 @@ function createWindow() {
     mainWindow.setMenu(null)
     // mainWindow.webContents.openDevTools();
     
-    const userDataPath = (electron.app || electron.remote.app).getPath(
-        'userData'
-    );
+    const userDataPath = electron.app.getPath('userData');
 
     const appPath = app.getAppPath();
 
@@ -65,6 +63,7 @@ function createWindow() {
                 mainWindow.destroy();
             }
         }
+        // TODO: Add a button to clear cthe cache in app path.
     ];
  
     appTray = new Tray(path.join(__dirname, './icon/OpenBlock-Link.ico'));

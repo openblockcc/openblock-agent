@@ -5,11 +5,11 @@
   "main": "src/index.js",
   "scripts": {
     "postinstall": "electron-builder install-app-deps && cpy ./ ../../../extensions --parents --cwd=./node_modules/scratchhw-extension/src",
+    "cpext": "cpy ./ ../../../extensions --parents --cwd=./node_modules/scratchhw-extension/src",
     "start": "electron .",
     "build": "npm run build:pack",
     "build:pack": "electron-builder --dir",
     "build:dist": "electron-builder",
-    "clean": "rimraf dist && rimraf extensions",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -29,7 +29,7 @@
   },
   "homepage": "https://github.com/ScratchHW/scratchhw-link-desktop#readme",
   "dependencies": {
-    "scratchhw-extension": "0.1.0-prerelease.20210108123641",
+    "scratchhw-extension": "0.1.0-prerelease.20210114151218",
     "scratchhw-link": "0.1.0-prerelease.20210111072835"
   },
   "devDependencies": {
