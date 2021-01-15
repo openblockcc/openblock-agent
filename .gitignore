@@ -12,3 +12,4 @@ dist/
 
 # Binary tools
 tools/Arduino
+tools/RealtimeFirmware
