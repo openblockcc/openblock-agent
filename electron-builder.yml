@@ -20,3 +20,28 @@ win:
 nsis:
   oneClick: false # allow user to choose per-user or per-machine
   artifactName: "OpenBlock Link ${version} Setup.${ext}"
+
+mac:
+  category: public.app-category.education
+  entitlements: buildResources/entitlements.mac.plist
+  extendInfo:
+    NSCameraUsageDescription: >-
+        This app requires camera access when taking a photo in the paint editor or using the video sensing blocks.
+    NSMicrophoneUsageDescription: >-
+        This app requires microphone access when recording sounds or detecting loudness.
+  gatekeeperAssess: true
+  hardenedRuntime: true
+  icon: buildResources/ScratchDesktop.icns
+  provisioningProfile: embedded.provisionprofile
+  artifactName: "OpenBlock Link ${version}.${ext}"
+  target:
+    - dmg
+    - mas
+dmg:
+  title: "OpenBlock Link ${version}"
+mas:
+  category: public.app-category.education
+  entitlements: buildResources/entitlements.mas.plist
+  entitlementsInherit: buildResources/entitlements.mas.inherit.plist
+  hardenedRuntime: false
+  icon: buildResources/ScratchDesktop.icns

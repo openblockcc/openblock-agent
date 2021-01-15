@@ -1,4 +1,14 @@
+# npm file
 node_modules/
-tools/Arduino
+
+# Temporary resource
 extensions/
+
+# Build dist
 dist/
+
+# Mac
+.DS_Store
+
+# Binary tools
+tools/Arduino

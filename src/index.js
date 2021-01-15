@@ -1,4 +1,4 @@
-const { app, BrowserWindow, ipcMain } = require('electron');
+const { app, BrowserWindow, ipcMain, nativeImage } = require('electron');
 const path = require('path');
 const electron = require('electron');
 const ScratchHWLink = require('scratchhw-link');
@@ -66,7 +66,7 @@ function createWindow() {
         // TODO: Add a button to clear cthe cache in app path.
     ];
  
-    appTray = new Tray(path.join(__dirname, './icon/OpenBlock-Link.ico'));
+    appTray = new Tray(nativeImage.createFromPath(path.join(__dirname, './icon/OpenBlock-Link.ico')));
     const contextMenu = Menu.buildFromTemplate(trayMenuTemplate);
     appTray.setToolTip('OpenBlock Link');
     appTray.setContextMenu(contextMenu);
