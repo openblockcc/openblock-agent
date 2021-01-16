@@ -1,11 +1,11 @@
 {
-  "name": "scratchhw-link-desktop",
+  "name": "openblock-link-desktop",
   "version": "0.2.1-beta",
-  "description": "Scratch-HW link desktop",
+  "description": "OpenBlock link desktop",
   "main": "src/index.js",
   "scripts": {
-    "postinstall": "electron-builder install-app-deps && cpy ./ ../../../extensions --parents --cwd=./node_modules/scratchhw-extension/src",
-    "cpext": "cpy ./ ../../../extensions --parents --cwd=./node_modules/scratchhw-extension/src",
+    "postinstall": "electron-builder install-app-deps && cpy ./ ../../../extensions --parents --cwd=./node_modules/openblock-extension/src",
+    "cpext": "cpy ./ ../../../extensions --parents --cwd=./node_modules/openblock-extension/src",
     "start": "electron .",
     "build": "npm run build:pack",
     "build:pack": "electron-builder --dir",
@@ -14,23 +14,23 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ScratchHW/scratchhw-link-desktop.git"
+    "url": "git+https://github.com/openblockcc/openblock-link-desktop.git"
   },
   "keywords": [
-    "scratchhw",
+    "openblock",
     "link",
     "scratch3.0",
     "desktop"
   ],
-  "author": "ScratchHW Team",
+  "author": "OpenBlock Team",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ScratchHW/scratchhw-link-desktop/issues"
+    "url": "https://github.com/openblockcc/openblock-link-desktop/issues"
   },
-  "homepage": "https://github.com/ScratchHW/scratchhw-link-desktop#readme",
+  "homepage": "https://github.com/openblockcc/openblock-link-desktop#readme",
   "dependencies": {
-    "scratchhw-extension": "0.1.0-prerelease.20210114151218",
-    "scratchhw-link": "0.1.0-prerelease.20210115142639"
+    "openblock-extension": "latest",
+    "openblock-link": "latest"
   },
   "devDependencies": {
     "cpy-cli": "^3.1.1",

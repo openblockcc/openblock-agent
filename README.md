@@ -1,4 +1,4 @@
-# scratchhw-link-desktop
+# openblock-link-desktop
 ## Install
 ```bash
 npm install

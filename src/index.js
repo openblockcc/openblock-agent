@@ -1,8 +1,8 @@
 const { app, BrowserWindow, ipcMain, nativeImage } = require('electron');
 const path = require('path');
 const electron = require('electron');
-const ScratchHWLink = require('scratchhw-link');
-const ScratchHWExtension = require('scratchhw-extension');
+const OpenBlockLink = require('openblock-link');
+const OpenBlockExtension = require('openblock-extension');
 
 const Menu = electron.Menu;
 const Tray = electron.Tray;
@@ -39,7 +39,7 @@ function createWindow() {
     } else {
         toolsPath = path.join(appPath, "../tools");
     }
-    const link = new ScratchHWLink(path.join(userDataPath, "Data"), toolsPath);
+    const link = new OpenBlockLink(path.join(userDataPath, "Data"), toolsPath);
     link.listen();
 
     let extensionsPath;
@@ -48,7 +48,7 @@ function createWindow() {
     } else {
         extensionsPath = path.join(appPath, "../extensions");
     }
-    const extension = new ScratchHWExtension(path.join(userDataPath, "Data"), extensionsPath);
+    const extension = new OpenBlockExtension(path.join(userDataPath, "Data"), extensionsPath);
     extension.listen();
 
     const trayMenuTemplate = [
