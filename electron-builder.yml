@@ -19,6 +19,7 @@ win:
 #   artifactName: "OpenBlock Link Desktop ${version}.${ext}"
 nsis:
   oneClick: false # allow user to choose per-user or per-machine
+  allowToChangeInstallationDirectory: true
   artifactName: "OpenBlock Link ${version} Setup.${ext}"
 
 mac:

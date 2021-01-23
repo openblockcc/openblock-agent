@@ -11,3 +11,7 @@
 # Coverage created files
 /.nyc_output
 /coverage
+
+# Temporary resource
+/extensions
+/tools

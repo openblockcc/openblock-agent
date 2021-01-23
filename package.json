@@ -4,12 +4,14 @@
   "description": "OpenBlock link desktop",
   "main": "src/index.js",
   "scripts": {
-    "postinstall": "electron-builder install-app-deps && cpy ./ ../../../extensions --parents --cwd=./node_modules/openblock-extension/src",
+    "postinstall": "electron-builder install-app-deps && npm run cpext && npm run cptools",
     "cpext": "cpy ./ ../../../extensions --parents --cwd=./node_modules/openblock-extension/src",
+    "cptools": "cpy ./ ../../../tools --parents --cwd=./node_modules/openblock-link/tools",
     "start": "electron .",
     "build": "npm run build:pack",
     "build:pack": "electron-builder --dir",
-    "build:dist": "electron-builder",
+    "build:dist": "npm run cpext && npm run cptools && electron-builder",
+    "clean": "rimraf dist extensions tools",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -29,7 +31,7 @@
   },
   "homepage": "https://github.com/openblockcc/openblock-link-desktop#readme",
   "dependencies": {
-    "openblock-extension": "latest",
+    "openblock-extension": "0.1.0-prerelease.20210116185639",
     "openblock-link": "latest"
   },
   "devDependencies": {
