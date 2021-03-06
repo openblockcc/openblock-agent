@@ -1,6 +1,6 @@
 {
   "name": "openblock-link-desktop",
-  "version": "0.2.1-beta",
+  "version": "0.3.1-beta",
   "description": "OpenBlock link desktop",
   "main": "src/index.js",
   "scripts": {
@@ -31,8 +31,8 @@
   },
   "homepage": "https://github.com/openblockcc/openblock-link-desktop#readme",
   "dependencies": {
-    "openblock-extension": "0.1.0-prerelease.20210301102200",
-    "openblock-link": "0.1.0-prerelease.20210123062540"
+    "openblock-extension": "0.1.0-prerelease.20210306123417",
+    "openblock-link": "0.1.0-prerelease.20210306040747"
   },
   "devDependencies": {
     "cpy-cli": "^3.1.1",
