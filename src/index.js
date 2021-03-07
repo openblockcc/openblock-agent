@@ -4,6 +4,10 @@ const electron = require('electron');
 const OpenBlockLink = require('openblock-link');
 const OpenBlockExtension = require('openblock-extension');
 
+const fs = require('fs');
+const compareVersions = require('compare-versions');
+const del = require('del');
+
 const Menu = electron.Menu;
 const Tray = electron.Tray;
 var appTray = null;
@@ -22,16 +26,37 @@ function createWindow() {
             nodeIntegration: true,
             enableRemoteModule: true,
         }
-        
     })
 
     mainWindow.loadFile('./src/index.html');
     mainWindow.setMenu(null)
-    // mainWindow.webContents.openDevTools();
     
     const userDataPath = electron.app.getPath('userData');
+    console.log('userDataPath: ', userDataPath);
+    const dataPath = path.join(userDataPath, 'Data');
 
     const appPath = app.getAppPath();
+
+    const appVersion = app.getVersion();
+    console.log('Current version: ', appVersion);
+
+    // if current version is newer then cache log, delet the data cache dir and write the
+    // new version into the cache file.
+    const applicationConfig = path.join(userDataPath, 'application.json');
+    if (fs.existsSync(applicationConfig)) {
+        const oldVersion = JSON.parse(fs.readFileSync(applicationConfig)).version;
+        if (compareVersions.compare(appVersion, oldVersion, '>')) {
+            if (fs.existsSync(dataPath)) {
+                del.sync([dataPath], {force: true});
+            }
+            fs.writeFileSync(applicationConfig, JSON.stringify({version: appVersion}));
+        }
+    } else {
+        if (fs.existsSync(dataPath)) {
+            del.sync([dataPath], {force: true});
+        }
+        fs.writeFileSync(applicationConfig, JSON.stringify({version: appVersion}));
+    }
 
     let toolsPath;
     if (appPath.search(/app.asar/g) === -1) {
@@ -39,7 +64,7 @@ function createWindow() {
     } else {
         toolsPath = path.join(appPath, "../tools");
     }
-    const link = new OpenBlockLink(path.join(userDataPath, "Data"), toolsPath);
+    const link = new OpenBlockLink(dataPath, toolsPath);
     link.listen();
 
     let extensionsPath;
@@ -48,7 +73,7 @@ function createWindow() {
     } else {
         extensionsPath = path.join(appPath, "../extensions");
     }
-    const extension = new OpenBlockExtension(path.join(userDataPath, "Data"), extensionsPath);
+    const extension = new OpenBlockExtension(dataPath, extensionsPath);
     extension.listen();
 
     const trayMenuTemplate = [
