@@ -1,18 +1,19 @@
 {
   "name": "openblock-link-desktop",
   "productName": "Openblock Link",
-  "version": "0.3.1-beta",
+  "version": "1.0.0-beta",
   "description": "OpenBlock link desktop",
   "main": "src/index.js",
   "scripts": {
-    "postinstall": "electron-builder install-app-deps && npm run cpext && npm run cptools",
+    "postinstall": "electron-builder install-app-deps && npm run cpdevice && npm run cpext && npm run cptools",
+    "cpdevice": "cpy ./ ../../../devices --parents --cwd=./node_modules/openblock-device/src",
     "cpext": "cpy ./ ../../../extensions --parents --cwd=./node_modules/openblock-extension/src",
     "cptools": "cpy ./ ../../../tools --parents --cwd=./node_modules/openblock-link/tools",
     "start": "electron .",
     "build": "npm run build:pack",
     "build:pack": "electron-builder --dir",
-    "build:dist": "npm run cpext && npm run cptools && electron-builder",
-    "clean": "rimraf dist extensions tools",
+    "build:dist": "npm run cpdevice && npm run cpext && npm run cptools && electron-builder",
+    "clean": "rimraf dist devices extensions tools",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -34,8 +35,9 @@
   "dependencies": {
     "compare-versions": "^3.6.0",
     "del": "^6.0.0",
-    "openblock-extension": "0.1.0-prerelease.20210306123417",
-    "openblock-link": "0.1.0-prerelease.20210306040747"
+    "openblock-device": "0.1.0-prerelease.20210323165224",
+    "openblock-extension": "0.1.0-prerelease.20210307113931",
+    "openblock-link": "0.1.0-prerelease.20210321140553"
   },
   "devDependencies": {
     "cpy-cli": "^3.1.1",

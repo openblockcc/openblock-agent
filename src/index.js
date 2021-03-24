@@ -2,6 +2,7 @@ const { app, BrowserWindow, ipcMain, nativeImage } = require('electron');
 const path = require('path');
 const electron = require('electron');
 const OpenBlockLink = require('openblock-link');
+const OpenBlockDevice = require('openblock-device');
 const OpenBlockExtension = require('openblock-extension');
 
 const fs = require('fs');
@@ -75,6 +76,15 @@ function createWindow() {
     }
     const extension = new OpenBlockExtension(dataPath, extensionsPath);
     extension.listen();
+
+    let devicesPath;
+    if (appPath.search(/app.asar/g) === -1) {
+        devicesPath = path.join(appPath, "devices");
+    } else {
+        devicesPath = path.join(appPath, "../devices");
+    }
+    const device = new OpenBlockDevice(dataPath, devicesPath);
+    device.listen();
 
     const trayMenuTemplate = [
         {

@@ -5,7 +5,6 @@
 /.gitattributes
 /.github
 /.travis.yml
-/extensions
 /dist
 
 # Coverage created files
@@ -15,3 +14,4 @@
 # Temporary resource
 /extensions
 /tools
+/devices
