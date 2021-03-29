@@ -1,7 +1,7 @@
 {
   "name": "openblock-link-desktop",
   "productName": "Openblock Link",
-  "version": "1.0.0-beta",
+  "version": "1.0.0",
   "description": "OpenBlock link desktop",
   "main": "src/index.js",
   "scripts": {
@@ -35,9 +35,9 @@
   "dependencies": {
     "compare-versions": "^3.6.0",
     "del": "^6.0.0",
-    "openblock-device": "0.1.0-prerelease.20210323165224",
-    "openblock-extension": "0.1.0-prerelease.20210307113931",
-    "openblock-link": "0.1.0-prerelease.20210321140553"
+    "openblock-device": "0.1.0-prerelease.20210328115506",
+    "openblock-extension": "0.1.0-prerelease.20210329032033",
+    "openblock-link": "0.1.0-prerelease.20210326122102"
   },
   "devDependencies": {
     "cpy-cli": "^3.1.1",
