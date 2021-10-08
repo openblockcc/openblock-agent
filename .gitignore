@@ -2,9 +2,11 @@
 node_modules/
 
 # Temporary resource
-extensions/
-tools/
-devices/
+/external-resources
+/tools
+/firmwares
+/drivers
+/translations
 
 # Build dist
 dist/

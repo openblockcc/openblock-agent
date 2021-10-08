@@ -1,6 +1,8 @@
 .app{
     color: white;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
     font-weight: bolder;
     margin: 0;
     position: absolute;
@@ -18,11 +20,23 @@
 }
 
 .info{
-    margin: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
     text-align: center;
 }
 
-.small{
+.version{
+    align-self: center;
+    text-align: left;
+}
+
+.component-version{
     font-size: x-small;
-    text-align: center;
+    text-align: left;
+}
+
+.component-version p{
+    margin-block-start: 0.3em;
+    margin-block-end: 0.3em;
 }

@@ -1,42 +1,48 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>OpenBlock Link</title>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <link rel="stylesheet" type="text/css" href="index.css">
-        <style>
-            body {
-               background-color: #4D97FF;
-            }
-            .splash {
-                color: white;
-                font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-                font-size: xx-large;
-                font-weight: bolder;
-                margin: 0;
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-            }
-        </style>
-    </head>
+    <title>Openblock Link</title>
 
-    <body>
-        <div class="app">
-            <div>
-                <img class="logo" alt="OpenBlock-Link.png" src="./icon/OpenBlock-Link.png"/>
-            </div>
-            <div class="info">
-                <h2>OpenBlock Link</h2>
-                <div>Version 1.0.0</div>
-                <table>
-                    <p  class="small">Electron 11.1.0</p>
-                </table>
+    <link rel="stylesheet" type="text/css" href="index.css">
+    <style>
+        body {
+            background-color: #4D97FF;
+        }
+
+        .splash {
+            color: white;
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-size: xx-large;
+            font-weight: bolder;
+            margin: 0;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="app">
+        <div>
+            <img class="logo" alt="OpenBlock-Link.png" src="./icon/OpenBlock-Link.png" />
+        </div>
+        <div class="info">
+            <h2 id="product-name">Openblock Link</h2>
+            <div class="version">
+                <div id="product-version">Version 0.0.0</div>
+                <div class="component-version">
+                    <p id="electron-version">Electron 0.0.0</p>
+                    <p id="chrome-version">Chrome 00.0.0000.000</p>
+                </div>
             </div>
         </div>
-    </body>
+    </div>
+</body>
+
 </html>

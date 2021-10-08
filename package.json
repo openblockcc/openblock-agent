@@ -1,20 +1,27 @@
 {
   "name": "openblock-link-desktop",
-  "productName": "Openblock Link",
+  "productName": "OpenBlock Link",
   "version": "1.0.0",
   "description": "OpenBlock link desktop",
   "main": "src/index.js",
+  "author": "OpenBlock.cc Team",
+  "license": "MIT",
   "scripts": {
-    "postinstall": "electron-builder install-app-deps && npm run cpdevice && npm run cpext && npm run cptools",
-    "cpdevice": "cpy ./ ../../../devices --parents --cwd=./node_modules/openblock-device/src",
-    "cpext": "cpy ./ ../../../extensions --parents --cwd=./node_modules/openblock-extension/src",
-    "cptools": "cpy ./ ../../../tools --parents --cwd=./node_modules/openblock-link/tools",
+    "postinstall": "electron-builder install-app-deps",
+    "i18n:src": "mkdirp translations && format-message extract --out-file translations/en.json src/**.js",
+    "i18n:push": "tx-push-src openblock-editor link-desktop translations/en.json",
+    "fetch:drivers": "rimraf ./drivers && node scripts/download-driver.js",
+    "fetch:exts": "rimraf ./external-resources && node ./node_modules/openblock-resource/script/download.js",
+    "fetch:firmwares": "rimraf ./firmwares && node ./node_modules/openblock-link/script/download-firmwares.js",
+    "fetch:tools": "rimraf ./tools && node ./node_modules/openblock-link/script/download-tools.js",
+    "fetch:all": "npm run fetch:drivers && npm run fetch:exts && npm run fetch:firmwares && npm run fetch:tools",
     "start": "electron .",
-    "build": "npm run build:pack",
+    "build": "electron-builder",
     "build:pack": "electron-builder --dir",
-    "build:dist": "npm run cpdevice && npm run cpext && npm run cptools && electron-builder",
-    "clean": "rimraf dist devices extensions tools",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build:dist": "npm run clean && npm run fetch:all && electron-builder",
+    "clean": "rimraf ./dist ./external-resources ./tools ./firmwares ./drivers",
+    "lint": "eslint ./src",
+    "test": ""
   },
   "repository": {
     "type": "git",
@@ -26,23 +33,28 @@
     "scratch3.0",
     "desktop"
   ],
-  "author": "OpenBlock Team",
-  "license": "MIT",
   "bugs": {
     "url": "https://github.com/openblockcc/openblock-link-desktop/issues"
   },
   "homepage": "https://github.com/openblockcc/openblock-link-desktop#readme",
   "dependencies": {
-    "compare-versions": "^3.6.0",
     "del": "^6.0.0",
-    "openblock-device": "0.1.0-prerelease.20210328115506",
-    "openblock-extension": "0.1.0-prerelease.20210329032033",
-    "openblock-link": "0.1.0-prerelease.20210326122102"
+    "electron-progressbar": "^2.0.1",
+    "openblock-l10n": "^3.10.20211007020944",
+    "openblock-link": "0.1.0-prerelease.20211006073349",
+    "openblock-resource": "0.1.0-prerelease.20210918043733",
+    "os-locale": "^5.0.0",
+    "node-localstorage": "^2.2.1"
   },
   "devDependencies": {
-    "cpy-cli": "^3.1.1",
+    "babel-eslint": "^10.0.1",
+    "compare-versions": "^3.6.0",
     "electron": "^8.5.5",
     "electron-builder": "^22.9.1",
+    "eslint": "^5.16.0",
+    "eslint-config-scratch": "^5.0.0",
+    "format-message": "^6.2.3",
+    "format-message-cli": "^6.2.3",
     "rimraf": "^3.0.2"
   }
 }
