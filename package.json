@@ -51,7 +51,7 @@
   "devDependencies": {
     "babel-eslint": "^10.0.1",
     "compare-versions": "^3.6.0",
-    "electron": "^8.5.5",
+    "electron": "^9.4.0",
     "electron-builder": "^22.9.1",
     "eslint": "^5.16.0",
     "eslint-config-scratch": "^5.0.0",
