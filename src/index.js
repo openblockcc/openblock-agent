@@ -387,7 +387,6 @@ const createWindow = () => {
 };
 
 const gotTheLock = app.requestSingleInstanceLock();
-// TODO 测试是否起作用
 if (gotTheLock) {
     app.on('second-instance', () => {
         // Someone tried to run a second instance, we should focus our window.
