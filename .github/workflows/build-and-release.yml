@@ -1,0 +1,196 @@
+name: Build and release
+
+on:
+  push:
+    branches: [ main ]
+    tags:
+      - 'v*'
+    paths-ignore:
+      - 'README.md'
+      - 'CHANGE.md'
+      - 'doc/*'
+      - '.github/*'
+
+jobs:
+  build-windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Use Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14.x'
+
+      - name: Npm Install
+        run: npm install
+
+      - name: Build Dist
+        env:
+          GA_ID: ${{ secrets.GA_ID }}
+          NODE_ENV: production
+          NODE_OPTIONS: --max_old_space_size=4096
+        run: npm run dist
+
+      - name: Archive production artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: OpenBlockLink-win-x64.exe
+          path: dist/OpenBlock*Setup.exe
+          retention-days: 1
+
+  build-windows32:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Use Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14.x'
+
+      - name: Npm Install
+        run: npm install
+
+      - name: Build Dist
+        env:
+          NODE_ENV: production
+          NODE_OPTIONS: --max_old_space_size=4096
+        run: npm run dist32
+
+      - name: Archive production artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: OpenBlockLink-win-x86.exe
+          path: dist/OpenBlock*Setup.exe
+          retention-days: 1
+
+  build-mac:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Use Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14.x'
+
+      - name: Npm Install
+        run: npm install
+
+      - name: Build Dist
+        env:
+          NODE_ENV: production
+          NODE_OPTIONS: --max_old_space_size=8192
+          CSC_IDENTITY_AUTO_DISCOVERY: false
+        run: npm run dist
+
+      - name: Archive production artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: OpenBlockLink-mac.dmg
+          path: dist/OpenBlock*.dmg
+          retention-days: 1
+
+  create-release:
+    needs: [build-windows, build-windows32, build-mac]
+    if: ${{ startsWith(github.ref, 'refs/tags/v') }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: get-npm-version
+        id: package-version
+        uses: martinbeentjes/npm-get-version-action@master
+
+      - name: Get tag
+        id: tag
+        uses: dawidd6/action-get-tag@v1
+
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ steps.tag.outputs.tag }}
+          release_name: OpenBlock Link ${{ steps.tag.outputs.tag }}
+          body: |
+            - **New feature**
+
+                1. First Change
+                2. Second Change
+
+            - **Fix bug**
+
+                1. First Change
+                2. Second Change
+          draft: true
+          prerelease: false
+
+      - name: Download all build result
+        uses: actions/download-artifact@v2
+
+      # Windows x64 Release
+      - name: Zip win x64 file
+        uses: papeloto/action-zip@v1
+        with:
+            files: OpenBlockLink-win-x64.exe
+            dest: OpenBlockLink-win-x64.zip
+
+      - name: Relase Windows x64 package
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./OpenBlockLink-win-x64.zip
+          asset_name: OpenBlockLink-${{ steps.package-version.outputs.current-version }}-win-x64.zip
+          asset_content_type: application/zip
+
+      # Windows x86 Release
+      - name: Zip win x86 file
+        uses: papeloto/action-zip@v1
+        with:
+            files: OpenBlockLink-win-x86.exe
+            dest: OpenBlockLink-win-x86.zip
+
+      - name: Relase Windows x64 package
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./OpenBlockLink-win-x86.zip
+          asset_name: OpenBlockLink-${{ steps.package-version.outputs.current-version }}-win-x86.zip
+          asset_content_type: application/zip
+
+      # Mac Release
+      - name: Zip mac file
+        uses: papeloto/action-zip@v1
+        with:
+            files: OpenBlockLink-mac.dmg
+            dest: OpenBlockLink-mac.zip
+
+      - name: Relase Mac package
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./OpenBlockLink-mac.zip
+          asset_name: OpenBlockLink-${{ steps.package-version.outputs.current-version }}-mac.zip
+          asset_content_type: application/zip
+
+      # Checksum Release
+      - name: Checksum
+        run: sha256sum OpenBlockLink-*.zip >> checksums.txt
+
+      - uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: checksums.txt
+          asset_name: ${{ steps.package-version.outputs.current-version }}-checksums-sha256.txt
+          asset_content_type: application/zip

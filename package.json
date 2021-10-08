@@ -15,10 +15,12 @@
     "fetch:firmwares": "rimraf ./firmwares && node ./node_modules/openblock-link/script/download-firmwares.js",
     "fetch:tools": "rimraf ./tools && node ./node_modules/openblock-link/script/download-tools.js",
     "fetch:all": "npm run fetch:drivers && npm run fetch:exts && npm run fetch:firmwares && npm run fetch:tools",
+    "fetch:all32": "npm run fetch:drivers && npm run fetch:exts && npm run fetch:firmwares && npm run fetch:tools -- --arch=ia32",
     "start": "electron .",
     "build": "electron-builder",
     "build:pack": "electron-builder --dir",
-    "build:dist": "npm run clean && npm run fetch:all && electron-builder",
+    "dist": "npm run clean && npm run fetch:all && electron-builder",
+    "dist32": "npm run clean && npm run fetch:all32 && electron-builder --ia32",
     "clean": "rimraf ./dist ./external-resources ./tools ./firmwares ./drivers",
     "lint": "eslint ./src",
     "test": ""
