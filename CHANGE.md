@@ -10,4 +10,4 @@
     4. Add clear cache function.
     5. Add the function of automatically updating external resource files.
 
-## v0.0.1
+## v0.2.1-beta
