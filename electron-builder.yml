@@ -3,7 +3,7 @@ directories:
   output: dist
 extraResources: ["tools", "external-resources", 'firmwares', "statics", "drivers"]
 
-appId: 'openblock.cc.openblock-link-desktop'
+appId: 'openblock.cc.openblock-link'
 productName: "OpenBlock Link"
 publish: # empty provider list = don't publish
 
