@@ -46,17 +46,18 @@
     "openblock-link": "0.1.0-prerelease.20211006073349",
     "openblock-resource": "0.1.0-prerelease.20210918043733",
     "os-locale": "^5.0.0",
-    "node-localstorage": "^2.2.1"
+    "node-localstorage": "^2.2.1",
+    "compare-versions": "^3.6.0",
+    "format-message": "^6.2.3",
+    "format-message-cli": "^6.2.3"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.1",
-    "compare-versions": "^3.6.0",
     "electron": "^8.5.5",
     "electron-builder": "^22.9.1",
     "eslint": "^5.16.0",
     "eslint-config-scratch": "^5.0.0",
-    "format-message": "^6.2.3",
-    "format-message-cli": "^6.2.3",
+    "prebuild-install": "^7.0.0",
     "rimraf": "^3.0.2"
   }
 }
