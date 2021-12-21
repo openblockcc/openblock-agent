@@ -9,9 +9,7 @@ OpenBlock Link is an application that provides local hardware connection support
 ![screenshot2](./docs/screenshot2.png)
 ## Getting Start
 
-Visit the wiki: [https://openblockcc.github.io/wiki/main](https://openblockcc.github.io/wiki/main)
-
-Visit the wiki on gitee (mirror): [https://openblockcc.gitee.io/wiki/main](https://openblockcc.gitee.io/wiki/main)
+Visit the wiki: https://wiki.openblock.cc
 
 ## Join chat
 
