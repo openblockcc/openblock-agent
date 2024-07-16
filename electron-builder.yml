@@ -3,43 +3,57 @@ directories:
   output: dist
 extraResources: ["tools", "external-resources", 'firmwares', "statics", "drivers"]
 
-appId: 'openblock.cc.openblock-link'
-productName: "OpenBlock Link"
+appId: 'openblock.cc.openblock-agent'
+productName: "OpenBlock Agent"
 publish: # empty provider list = don't publish
+artifactName: "OpenBlock-Agent_v${version}_${os}_${arch}.${ext}"
 
 mac:
   category: public.app-category.education
   entitlements: buildResources/entitlements.mac.plist
   gatekeeperAssess: true
   hardenedRuntime: true
-  icon: buildResources/OpenBlock-Link.icns
+  icon: buildResources/OpenblockAgent.icns
   provisioningProfile: embedded.provisionprofile
-  artifactName: "OpenBlock Link ${version}.${ext}"
   target:
     - dmg
     # - mas
 dmg:
-  title: "OpenBlock Link ${version}"
+  title: "OpenBlock Agent ${version}"
 # mas:
 #   category: public.app-category.education
 #   entitlements: buildResources/entitlements.mas.plist
 #   entitlementsInherit: buildResources/entitlements.mas.inherit.plist
 #   hardenedRuntime: false
-#   icon: buildResources/OpenBlock-Link.icns
+#   icon: buildResources/OpenblockAgent.icns
 
 win:
-  icon: buildResources/OpenBlock-Link.ico
+  icon: buildResources/OpenblockAgent.ico
   target:
     # - appx
     - nsis
 # appx:
-#   identityName: OpenBlock.OpenBlockLinkDesktop
+#   identityName: OpenBlock.OpenblockAgent
 #   publisherDisplayName: "OpenBlock"
 #   publisher: "CN=2EC43DF1-469A-4119-9AB9-568A0A1FF65F"
-#   artifactName: "OpenBlock Link Desktop ${version}.${ext}"
+#   artifactName: "OpenBlock Agent ${version}.${ext}"
 nsis:
   oneClick: false # allow user to choose per-user or per-machine
   allowToChangeInstallationDirectory: true
   include: buildResources/installer.nsh
 #   license: LICENSE
-  artifactName: "OpenBlock Link ${version} Setup.${ext}"
+
+linux:
+  category: Education
+  icon: buildResources/linux
+  desktop:
+    - Encoding: UTF-8
+    - Name: OpenBlockAgent
+    - Icon: openblock-agent
+    - Type: Application
+    - Terminal: false
+  target:
+    - deb
+
+deb:
+  depends: ["libnotify4", "libxtst6", "libnss3"]

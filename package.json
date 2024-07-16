@@ -1,8 +1,8 @@
 {
-  "name": "openblock-link-desktop",
-  "productName": "OpenBlock Link",
+  "name": "openblock-agent",
+  "productName": "OpenBlock Agent",
   "version": "1.0.0",
-  "description": "OpenBlock link desktop",
+  "description": "OpenBlock agent provide link and resource services",
   "main": "src/index.js",
   "author": "OpenBlock.cc Team",
   "license": "MIT",
@@ -27,18 +27,20 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/openblockcc/openblock-link-desktop.git"
+    "url": "git+https://github.com/openblockcc/openblock-agent.git"
   },
   "keywords": [
     "openblock",
+    "agent",
     "link",
+    "resource",
     "scratch3.0",
     "desktop"
   ],
   "bugs": {
-    "url": "https://github.com/openblockcc/openblock-link-desktop/issues"
+    "url": "https://github.com/openblockcc/openblock-agent/issues"
   },
-  "homepage": "https://github.com/openblockcc/openblock-link-desktop#readme",
+  "homepage": "https://github.com/openblockcc/openblock-agent#readme",
   "dependencies": {
     "del": "^6.0.0",
     "electron-progressbar": "^2.0.1",
